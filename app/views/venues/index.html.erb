@@ -25,12 +25,21 @@
   </div>
   <div class="row">
     <% @venues.each do |venue| %>
-      <%= link_to venue, class: "col-12 col-sm-6 col-md-4" do %>
-        <div class="card-product mb-4 box-shadow">
-          <h2><%= venue.venue_name %></h2>
-          <p><%= venue.city %></p> - <p><%= venue.post_code %></p>
+      <div class="col-12 col-sm-6 col-md-4">
+        <img class="card-product-img" src="https://www.historic-uk.com/wp-content/uploads/2019/02/oldest-pub-in-england-2800x1440.jpg" />
+          <div class="card-product box-shadow">
+            <h2><%= venue.venue_name %></h2>
+            <p><i class="fas fa-map-marker-alt"></i> <%= venue.city %>, <%= venue.post_code %></p>
+              <div class="d-flex mt-2">
+                <% venue.drinks_opportunities.each do |opportunity| %>
+                  <div class="tag"> <%= Drink.find(opportunity.drink_id).name %></div>
+                <% end %>
+              </div>
+          </div>
+          <div class="d-flex mb-4">
+            <%= link_to "Join Auction", venue_path(venue.id), class: "btn-auction" %>
+          </div>
         </div>
-      <% end %>
     <% end %>
   </div>
 </div>
