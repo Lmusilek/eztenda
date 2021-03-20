@@ -1,2 +1,12 @@
-<h1>Venues#show</h1>
-<p>Find me in app/views/venues/show.html.erb</p>
+<div class="container mt-4">
+  <h1><%= @venue.venue_name %></h1>
+    <p><%= @venue.description %></p>
+    <p><%= @venue.region %></p>
+    <p><%= @venue.city %></p>
+    <p><%= @venue.post_code %></p>
+
+    <% if @venue.user == current_user %>
+      <%= link_to "Edit", edit_venue_path(@venue), class: 'mt-4  btn btn-primary'%>
+      <%= link_to "Delete", venue_path(@venue), class: 'mt-4  btn btn-secondary', method: :delete, data: { confirm: 'Are you sure that you want to delete this venue?' } %>
+    <% end %>
+</div>

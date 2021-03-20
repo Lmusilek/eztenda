@@ -18,8 +18,9 @@ class VenuesController < ApplicationController
 
   def create
     @venue = Venue.new(venue_params)
-    if @event.save
-      redirect_to venue_path(@venue)
+    @venue.user = current_user
+    if @venue.save
+      redirect_to venue_path(@venue), notice: "The venue was created with success."
     else
       render :new
     end
@@ -41,7 +42,7 @@ class VenuesController < ApplicationController
   def destroy
     @venue = Venue.find(params[:id])
     @venue.destroy
-    redirect_to venue_path
+    redirect_to venues_path
   end
 
   private

@@ -8,3 +8,15 @@
   %>
   <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
+
+<div class="container mt-4">
+  <h1>Venues</h1>
+    <% @venues.each do |venue| %>
+      <%= link_to  venue do %>
+        <div class="card">
+          <h2 class="card-title"><%= venue.venue_name %></h2>
+          <p><%= venue.city %></p> - <p><%= venue.post_code %></p>
+        </div>
+      <% end %>
+  <% end %>
+</div>
