@@ -64,3 +64,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'faker', '~> 2.17'
 gem 'pg_search', '~> 2.3.0'
 gem 'geocoder'
+gem 'dotenv-rails', groups: [:development, :test]
+
