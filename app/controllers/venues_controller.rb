@@ -1,15 +1,24 @@
 class VenuesController < ApplicationController
   def index
-    if params[:query].present?
-      sql_query = "venue_name ILIKE :query OR synopsis ILIKE :query"
-      @venues = Venue.where("venue_name ILIKE ?", "%#{params[:query]}%")
-    else
+    @query = params[:query]
+    @venues = Venue.search(params[:query])
+
+    if @venues.length == 0
       @venues = Venue.all
     end
   end
 
   def show
     @venue = Venue.find(params[:id])
+
+       @markers = [
+      {
+        lat: @venue.latitude,
+        lng: @venue.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { venue: @venue })
+
+      }
+    ]
   end
 
   def new

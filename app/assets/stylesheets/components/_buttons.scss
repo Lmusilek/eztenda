@@ -1,0 +1,23 @@
+.btn-gray{
+  color:white;
+  background-color: #47423E;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-color: #00000085;
+}
+
+.btn-gray:hover {
+  background-color: #35322f;
+  color:white;
+}
+
+.btn-white{
+  color:#47423E;
+  background-color: #EDE6E3;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-color: #00000085;
+}
+
+.btn-white:hover {
+  color:#black;
+  background-color: #c5c0be;
+}
