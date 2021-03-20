@@ -23,5 +23,5 @@ class Venue < ApplicationRecord
   validates :city, presence: true
   validates :post_code, presence: true
   #ACTION TEXT
-  has_rich_text :description
+  has_rich_text :info
 end
