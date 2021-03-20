@@ -15,10 +15,12 @@ class BidsController < ApplicationController
   def create
     @drink_opportunity = DrinksOpportunity.find(params[:drinks_opportunity_id])
     @bid = Bid.new(bid_params)
-    @bid.venue = @venue
+    @bid.user_id = current_user.id
+    @bid.drinks_opportunity_id = @drink_opportunity.id
     if @bid.save
-      redirect_to venue_path(@venue), notice: "The venue was created with success."
+      redirect_to venue_path(@drink_opportunity.venue.id), notice: "The bid was created with success."
     else
+      raise
       render :new
     end
   end
