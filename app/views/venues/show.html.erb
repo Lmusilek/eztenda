@@ -4,14 +4,14 @@
 </div>
 <div class ="container">
   
-  <div class="margin-top-40">
-    <div>
+  <div class="margin-top-40 d-flex">
+    <div class="col-md-4 p-0">
       <h1><%= @venue.venue_name %></h1>
       <h3>Venue type</h3>
     </div>
 
-    <div>
-      <p>teststsetasetas</p>
+    <div class="venue-logo col-md-6">
+      <%= image_tag "be_at_one_logo.png"%>
     </div>
   </div>
 
@@ -49,12 +49,18 @@
       <h2>Listings:</h2>
       <p>Item:</p>
       <p>Period:</p>
-      <p>Locations:</p>
+      <p>Description:</p>
       <p>Price:</p>
     </div>
 
     <div>
       <%= submit_tag 'Bid', class: 'btn btn-warning' %>
+    </div>
+  </div>
+
+   <div class ="container mt-4">
+    <div>
+      <h2>Bidding History</h2>
     </div>
   </div>
   
