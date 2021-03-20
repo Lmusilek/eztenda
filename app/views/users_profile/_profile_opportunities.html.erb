@@ -1,0 +1,31 @@
+<h1>My opportunitties</h1>
+
+<div class="container mt-2">
+<h2>Bids</h2>
+  <div class="row d-flex">
+
+    <% @drinksopportunities.each do |drinksopportunity| %>
+      <% if current_user.id === drinksopportunity.venue.user_id %>
+        <div class="col-12 col-md-6">
+          <div class="card-product">
+
+            <div>
+
+              <div class="profile-info">
+                 <h2> <%= link_to drinksopportunity.start_time , drinks_opportunity_path(drinksopportunity), style:"margin-right:10px;"%></h2>
+              </div>
+              <div class="profile-actions">
+
+                <%= link_to "" , edit_drinks_opportunity_path(drinksopportunity), class:"fas fa-pencil-alt", style:"margin-right:10px;"%>
+
+                <%= link_to "" , drinks_opportunity_path(drinksopportunity), class:"far fa-trash-alt", method: :delete %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+
