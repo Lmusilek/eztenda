@@ -1,6 +1,11 @@
 class VenuesController < ApplicationController
   def index
-    @venues = Venue.all
+    if params[:query].present?
+      sql_query = "venue_name ILIKE :query OR synopsis ILIKE :query"
+      @venues = Venue.where("venue_name ILIKE ?", "%#{params[:query]}%")
+    else
+      @venues = Venue.all
+    end
   end
 
   def show

@@ -1,3 +1,14 @@
+<%= render 'shared/banner' %>
+
+<%= form_tag venues_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a Venue"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
 <div class="container mt-4">
   <h1>Venues</h1>
     <% @venues.each do |venue| %>
@@ -9,4 +20,3 @@
       <% end %>
   <% end %>
 </div>
-
