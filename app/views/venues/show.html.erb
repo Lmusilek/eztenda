@@ -1,14 +1,23 @@
-<div class="container mt-4">
-  <h1><%= @venue.venue_name %></h1>
-    <p><%= @venue.description %></p>
-    <p><%= @venue.region %></p>
-    <p><%= @venue.city %></p>
-    <p><%= @venue.post_code %></p>
+<div class ="container">
+  <div class ="body-flex">
+    <div class="flex-left">
+      <h1><%= @venue.venue_name %></h1>
+        <p><%= @venue.description %></p>
+        <p><%= @venue.region %></p>
+        <p><%= @venue.city %></p>
+        <p><%= @venue.post_code %></p>
 
-    <% if @venue.user == current_user %>
-      <%= link_to "Edit", edit_venue_path(@venue), class: 'mt-4  btn btn-primary'%>
-      <%= link_to "Delete", venue_path(@venue), class: 'mt-4  btn btn-secondary', method: :delete, data: { confirm: 'Are you sure that you want to delete this venue?' } %>
-    <% end %>
+        <% if @venue.user == current_user %>
+          <%= link_to "Edit", edit_venue_path(@venue), class: 'mt-4  btn btn-primary'%>
+          <%= link_to "Delete", venue_path(@venue), class: 'mt-4  btn btn-secondary', method: :delete, data: { confirm: 'Are you sure that you want to delete this venue?' } %>
+        <% end %>
+    </div>
+    
+    <div class="flex-right">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum id ab perferendis sequi,
+    odit quo est maxime modi nobis, quis quod necessitatibus culpa aspernatur, praesentium
+    optio qui atque eius. Laboriosam!
+    </div>
+
+  </div>
 </div>
-
-
