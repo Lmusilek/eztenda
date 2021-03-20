@@ -16,6 +16,7 @@ class Venue < ApplicationRecord
   belongs_to :user
   has_many :drinks_opportunities
   # VALIDATIONS
+  has_one_attached :photo
   validates :venue_name, presence: true
   validates :description, presence: true
   validates :region, presence: true
