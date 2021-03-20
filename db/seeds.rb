@@ -46,7 +46,7 @@ owners.each do |owner|
   description: "Nice pub",
   region: "England",
   city: "London",
-  post_code: "SE2010UJ",
+  post_code: "E1 0PQ",
   user_id: owner.id
   )
   venue.save!
