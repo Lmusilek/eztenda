@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_20_114245) do
+ActiveRecord::Schema.define(version: 2021_03_20_131206) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,11 +23,13 @@ ActiveRecord::Schema.define(version: 2021_03_20_114245) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "drinks_opportunity_id"
+    t.index ["drinks_opportunity_id"], name: "index_bids_on_drinks_opportunity_id"
     t.index ["user_id"], name: "index_bids_on_user_id"
   end
 
   create_table "drinks", force: :cascade do |t|
-    t.string "type"
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -38,10 +40,8 @@ ActiveRecord::Schema.define(version: 2021_03_20_114245) do
     t.integer "quantity"
     t.bigint "drink_id", null: false
     t.bigint "venue_id", null: false
-    t.bigint "bid_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["bid_id"], name: "index_drinks_opportunities_on_bid_id"
     t.index ["drink_id"], name: "index_drinks_opportunities_on_drink_id"
     t.index ["venue_id"], name: "index_drinks_opportunities_on_venue_id"
   end
@@ -73,8 +73,8 @@ ActiveRecord::Schema.define(version: 2021_03_20_114245) do
     t.index ["user_id"], name: "index_venues_on_user_id"
   end
 
+  add_foreign_key "bids", "drinks_opportunities"
   add_foreign_key "bids", "users"
-  add_foreign_key "drinks_opportunities", "bids"
   add_foreign_key "drinks_opportunities", "drinks"
   add_foreign_key "drinks_opportunities", "venues"
   add_foreign_key "venues", "users"

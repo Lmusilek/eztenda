@@ -12,9 +12,9 @@ require "faker"
 puts "Running seed..."
 puts "Destorying tables..."
 
-Drink.destroy_all
 Bid.destroy_all
 DrinksOpportunity.destroy_all
+Drink.destroy_all
 Venue.destroy_all
 User.destroy_all
 
@@ -30,8 +30,23 @@ crown = User.create!(first_name: "Lukas", last_name: "Musilek", email: "lukas@ex
 
 ship = User.create!(first_name: "Juliana", last_name: "Mokwa", email: "juliana@example.com", password: "123456", is_venue: true )
 
+# owners = [fox, hound, duck, crown, ship]
 puts "Saving venues into an array..."
-venues = [fox, hound, duck, crown, ship]
+
+owners = User.all
+
+puts "Creating venues"
+owners.each do |owner|
+  venue = Venue.new(
+  venue_name: owner.last_name,
+  description: "Nice pub",
+  region: "England",
+  city: "London",
+  post_code: "SE2010UJ",
+  user_id: owner.id
+  )
+  venue.save!
+end
 
 puts "Creating 20 drink sellers..."
 puts "Pushing sellers into array..."
@@ -53,23 +68,23 @@ puts "Creating Drinks table..."
   drinks = Drink.new(
     name: Faker::Beer.brand
     )
-    drinks.save
+    drinks.save!
   end
   
-puts "Creating venue..."
+puts "Creating opportunities..."
 
 opportunity_name = ["Opportunity1", "Opportunity2", "Opportunity3", "Opportunity4", "Opportunity5", "Opportunity6", "Opportunity7", "Opportunity8", "Opportunity9", "Opportunity10", "Opportunity11", "Opportunity12", "Opportunity13", "Opportunity14", "Opportunity15"]
+
+venues = Venue.all
 
 venues.each do |venue|
   rand(1..2).times do
     opportunity = DrinksOpportunity.new(
-      event_name: opportunity_name.sample,
       start_time: DateTime.new(2021, rand(3..9), rand(12..30), rand(1..23)),
       end_time: DateTime.new(2021,6,20,9),
       quantity: rand(500..10000),
-      venue_id: venue,
-      drink_id: Drink.sample.id,
-      bid_id: 
+      venue_id: venue.id,
+      drink_id: Drink.all.sample.id 
       )
     opportunity.save!
   end
@@ -83,23 +98,12 @@ DrinksOpportunity.all.each do |opportunity|
       contract: "This is a contract!",
       price: rand(200..5000),
       notes: "These are some notes for the bids!",
-      user_id: seller_arr.sample.id
+      user_id: seller_arr.sample.id,
+      drinks_opportunity: opportunity
     )
   end
 end
 
-
-puts "Adding drinks to opportunity..."
-.all.each do |venue|
-  rand(1..3).times do
-    EventGenre.create(
-      event_id: event.id,
-      genre_id: Genre.all.sample.id
-      )
-  end
-end
-
-puts "..."
 puts "Seed complete!"
 
 
