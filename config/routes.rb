@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :drinks
   resources :venues
   resources :bids
+
+  resources 'profile', to: 'users_profile#index' , as: :profile, only: [:index]
 end

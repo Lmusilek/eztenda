@@ -1,0 +1,21 @@
+<div class="container mt-4">
+  <div class="profile-grid">
+     <div class="profile-menu">
+      <a class="dropdown-item" onclick="document.getElementById('profile-results').innerHTML=document.getElementById('profile_list_venues').innerHTML;">Venues</a>
+      <a class="dropdown-item" onclick="document.getElementById('profile-results').innerHTML=document.getElementById('profile_list_opportunities').innerHTML;">Opportunities</a>
+      <a class="dropdown-item" onclick="document.getElementById('profile-results').innerHTML=document.getElementById('profile_list_bids').innerHTML;">Bids</a>
+     </div>
+
+     <div id="profile-results"></div>
+     <div id="profile_list_venues" style="visibility:hidden;" >
+          <%= render 'profile_venues'%>
+        </div>
+        <div id="profile_list_opportunities" style="visibility:hidden;" >
+          <%= render 'profile_opportunities'%>
+        </div>
+        <div id="profile_list_bids" style="visibility:hidden;" >
+          <%= render 'profile_bids'%>
+        </div>
+   </div>
+</div>
+
