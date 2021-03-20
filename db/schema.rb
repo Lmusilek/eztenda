@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_20_100654) do
+ActiveRecord::Schema.define(version: 2021_03_20_101133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,20 @@ ActiveRecord::Schema.define(version: 2021_03_20_100654) do
     t.string "type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "drinks_opportunities", force: :cascade do |t|
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer "quantity"
+    t.bigint "drink_id", null: false
+    t.bigint "venue_id", null: false
+    t.bigint "bid_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["bid_id"], name: "index_drinks_opportunities_on_bid_id"
+    t.index ["drink_id"], name: "index_drinks_opportunities_on_drink_id"
+    t.index ["venue_id"], name: "index_drinks_opportunities_on_venue_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -54,5 +68,8 @@ ActiveRecord::Schema.define(version: 2021_03_20_100654) do
   end
 
   add_foreign_key "bids", "users"
+  add_foreign_key "drinks_opportunities", "bids"
+  add_foreign_key "drinks_opportunities", "drinks"
+  add_foreign_key "drinks_opportunities", "venues"
   add_foreign_key "venues", "users"
 end
