@@ -1,7 +1,12 @@
 class Venue < ApplicationRecord
   # PG SEARCH
-  #include PgSearch::Model
-  #multisearchable against: [:venue_name, :city, :region]
+
+  include PgSearch::Model
+    pg_search_scope :search,
+    against: [ :venue_name, :city, :region ],
+    using: {
+      tsearch: { prefix: true }
+    }
 
   # REFERENCES
   has_many :bids, through: :drinks_opportunity

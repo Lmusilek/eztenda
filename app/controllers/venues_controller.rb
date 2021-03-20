@@ -1,9 +1,9 @@
 class VenuesController < ApplicationController
   def index
-    if params[:query].present?
-      sql_query = "venue_name ILIKE :query OR synopsis ILIKE :query"
-      @venues = Venue.where("venue_name ILIKE ?", "%#{params[:query]}%")
-    else
+    @query = params[:query]
+    @venues = Venue.search(params[:query])
+
+    if @venues.length == 0
       @venues = Venue.all
     end
   end
