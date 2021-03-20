@@ -1,11 +1,14 @@
 class Venue < ApplicationRecord
+    # MAPBOX
+  geocoded_by :post_code
+  after_validation :geocode, if: :will_save_change_to_post_code?
   # PG SEARCH
 
   include PgSearch::Model
-    pg_search_scope :search,
-    against: [ :venue_name, :city, :region ],
-    using: {
-      tsearch: { prefix: true }
+  pg_search_scope :search,
+  against: [ :venue_name, :city, :region ],
+  using: {
+    tsearch: { prefix: true }
     }
 
   # REFERENCES
