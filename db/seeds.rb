@@ -13,9 +13,13 @@ puts "Running seed..."
 puts "Destorying tables..."
 
 Bid.destroy_all
+puts "Destorying bid tables..."
 DrinksOpportunity.destroy_all
+puts "Destorying DrinksOpportunity tables..."
 Drink.destroy_all
+puts "Destorying Drink tables..."
 Venue.destroy_all
+puts "Destorying Venue tables..."
 User.destroy_all
 
 puts "Creating venues..."
@@ -70,7 +74,7 @@ puts "Creating Drinks table..."
     )
     drinks.save!
   end
-  
+
 puts "Creating opportunities..."
 
 opportunity_name = ["Opportunity1", "Opportunity2", "Opportunity3", "Opportunity4", "Opportunity5", "Opportunity6", "Opportunity7", "Opportunity8", "Opportunity9", "Opportunity10", "Opportunity11", "Opportunity12", "Opportunity13", "Opportunity14", "Opportunity15"]
@@ -84,7 +88,7 @@ venues.each do |venue|
       end_time: DateTime.new(2021,6,20,9),
       quantity: rand(500..10000),
       venue_id: venue.id,
-      drink_id: Drink.all.sample.id 
+      drink_id: Drink.all.sample.id
       )
     opportunity.save!
   end
