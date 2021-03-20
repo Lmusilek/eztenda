@@ -1,8 +1,9 @@
-<%= simple_form_for venue do |f| %>
+<%= simple_form_for (@venue) do |f| %>
   <%= f.input :venue_name %>
   <%= f.input :description, :as => :text, :input_html => { 'rows' => 5, 'cols' => 10 } %>
   <%= f.input :region %>
   <%= f.input :city %>
   <%= f.input :post_code %>
+  <%= f.input :photo, as: :file %>
   <%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>

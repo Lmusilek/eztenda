@@ -4,6 +4,7 @@
     <p><%= @venue.region %></p>
     <p><%= @venue.city %></p>
     <p><%= @venue.post_code %></p>
+    <%= cl_image_tag @venue.photo.key %>
 
     <% if @venue.user == current_user %>
       <%= link_to "Edit", edit_venue_path(@venue), class: 'mt-4  btn btn-primary'%>
