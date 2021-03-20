@@ -1,30 +1,22 @@
-<h1>My bids</h1>
 
-<div class="container mt-2">
-<h2>Bids</h2>
-  <div class="row d-flex">
 
-    <% @bids.each do |bid| %>
-      <% if current_user.id === bid.user_id %>
-        <div class="col-12 col-md-6">
-          <div class="card-product">
+<div class="row p-5">
+  <div class="table-responsive">
+    <table class="table">
 
-            <div>
+      <tbody>
+        <tr class="row-border">
+          <td class="label">Venue name</td>
+           <td class="label">Price:</td>
+           <td class="label">Drink:</td>
+           <td class="label">Contract:</td>
+           <td class="label"> </td>
+        </tr>
 
-              <div class="profile-info">
-                 <h2> <%= link_to bid.venue_name , bid_path(bid), style:"margin-right:10px;"%></h2>
-              </div>
-              <div class="profile-actions">
 
-                <%= link_to "" , edit_venue_path(bid), class:"fas fa-pencil-alt", style:"margin-right:10px;"%>
+      </tbody>
 
-                <%= link_to "" , venue_path(bid), class:"far fa-trash-alt", method: :delete %>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
+    </table>
   </div>
 </div>
 
