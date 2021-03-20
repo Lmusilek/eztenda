@@ -1,6 +1,7 @@
 <%= simple_form_for venue do |f| %>
   <%= f.input :venue_name %>
-  <%= f.input :description, :as => :text, :input_html => { 'rows' => 5, 'cols' => 10 } %>
+  <%= f.label :description %>
+  <%= f.rich_text_area  :description, :as => :text, :input_html => { 'rows' => 5, 'cols' => 10 } %>
   <%= f.input :region %>
   <%= f.input :city %>
   <%= f.input :post_code %>
