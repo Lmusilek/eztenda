@@ -1,5 +1,6 @@
 class Venue < ApplicationRecord
   # PG SEARCH
+
   include PgSearch::Model
     pg_search_scope :search,
     against: [ :venue_name, :city, :region ],
