@@ -12,7 +12,11 @@
     </div>
 
     <div class="venue-logo col-md-6">
+        <% if @venue.photo.attached? %>
          <%= cl_image_tag @venue.photo.key %>
+        <% else %>
+          <img src="https://www.historic-uk.com/wp-content/uploads/2019/02/oldest-pub-in-england-2800x1440.jpg" alt="">
+        <% end %>
     </div>
   </div>
 
@@ -51,7 +55,13 @@
     </div>
 
     <div>
-      <%= submit_tag 'Bid', class: 'btn btn-warning' %>
+      <% @venue.drinks_opportunities.each do |opportunity|  %>
+        <%= Drink.find(opportunity.drink_id).name %>
+        <%=opportunity.start_time %>
+        <%=opportunity.end_time %>
+        <%= link_to "Place bid", new_drinks_opportunity_bid_path(opportunity) %>
+      <% end %>
+
     </div>
   </div>
 
@@ -66,4 +76,4 @@
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
-  
+
