@@ -22,3 +22,16 @@
   opacity: 0.8;
   text-shadow:black 2px 2px 2px;
 }
+
+.banner-small {
+  background-size: cover;
+  background-position: center;
+  background-color: #D75746;
+  padding: 50px 0;
+  height: 80px;
+  text-align: center;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

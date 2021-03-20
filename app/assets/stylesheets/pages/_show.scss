@@ -1,5 +1,6 @@
 .body-flex {
   display: flex;
+  margin-top: 40px;
 }
 
 .flex-left {
@@ -16,6 +17,13 @@
 .flex-right p {
   margin-bottom: 5px;
   padding: 10px;
-  border-bottom: 1px solid lightgray;
   font-size: 15px;
+}
+
+.margin-top-20 {
+  margin-top: 20px;
+}
+
+.inline-block {
+  display: inline-block
 }
