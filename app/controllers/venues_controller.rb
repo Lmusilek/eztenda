@@ -1,6 +1,6 @@
 class VenuesController < ApplicationController
   def index
-    @venues = Venues.all
+    @venues = Venue.all
   end
 
   def show
@@ -12,9 +12,10 @@ class VenuesController < ApplicationController
   end
 
   def create
-    @venue = venue.new(venue_params)
-    if @event.save
-      redirect_to venue_path(@venue)
+    @venue = Venue.new(venue_params)
+    @venue.user = current_user
+    if @venue.save
+      redirect_to venue_path(@venue), notice: "The venue was created with success."
     else
       render :new
     end
@@ -36,7 +37,7 @@ class VenuesController < ApplicationController
   def destroy
     @venue = Venue.find(params[:id])
     @venue.destroy
-    redirect_to venue_path
+    redirect_to venues_path
   end
 
   private

@@ -1,2 +1,12 @@
-<h1>Venues#index</h1>
-<p>Find me in app/views/venues/index.html.erb</p>
+<div class="container mt-4">
+  <h1>Venues</h1>
+    <% @venues.each do |venue| %>
+      <%= link_to  venue do %>
+        <div class="card">
+          <h2 class="card-title"><%= venue.venue_name %></h2>
+          <p><%= venue.city %></p> - <p><%= venue.post_code %></p>
+        </div>
+      <% end %>
+  <% end %>
+</div>
+
