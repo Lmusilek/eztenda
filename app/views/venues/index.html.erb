@@ -1,2 +1,11 @@
 <h1>Venues#index</h1>
 <p>Find me in app/views/venues/index.html.erb</p>
+
+<%= form_tag venues_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a Venue"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
