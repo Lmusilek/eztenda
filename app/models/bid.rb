@@ -5,5 +5,5 @@ class Bid < ApplicationRecord
   # VALIDATIONS
   validates :contract, presence: true
   validates :price, presence: true
-  validates :notes
+  # validates :notes, presence: true
 end
