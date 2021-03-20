@@ -2,31 +2,31 @@ class DrinksOpportunitiesController < ApplicationController
   # INDEX
 
   def index
-    @drinks_opportunities = DrinkOpportunity.all
+    @drinks_opportunities = DrinksOpportunity.all
   end
 
   # SHOW
 
   def show
-    @drinks_opportunities = DrinkOpportunity.find(params[:id])
+    @drinks_opportunities = DrinksOpportunity.find(params[:id])
   end
 
   # NEW
 
   def new
-    @drink_opportunity = DrinkOpportunity.new
+    @drink_opportunity = DrinksOpportunity.new
   end
 
   # EDIT
 
   def edit
-     @drink_opportunity = DrinkOpportunity.find(params[:id])
+     @drink_opportunity = DrinksOpportunity.find(params[:id])
   end
 
   # UPDATE
 
   def update
-    @drink_opportunity = DrinkOpportunity.find(params[:id])
+    @drink_opportunity = DrinksOpportunity.find(params[:id])
       if @drink_opportunity.update(drinks_opportunities_params)
         redirect_to drink_opportunity(@drink_opportunity)
       else

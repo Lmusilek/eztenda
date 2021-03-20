@@ -1,20 +1,23 @@
 class BidsController < ApplicationController
   def index
-    @bids = Bids.all
+    @bids = Bid.all
   end
 
   def show
-    @bid = Bids.find(params[:id])
+    @bid = Bid.find(params[:id])
   end
 
   def new
-    @bid = Bids.new
+    @drink_opportunity = DrinksOpportunity.find(params[:drinks_opportunity_id])
+    @bid = Bid.new
   end
 
   def create
-    @bid = bid.new(bid_params)
+    @drink_opportunity = DrinksOpportunity.find(params[:drinks_opportunity_id])
+    @bid = Bid.new(bid_params)
+    @bid.venue = @venue
     if @bid.save
-      redirect_to bid_path(@bid)
+      redirect_to venue_path(@venue), notice: "The venue was created with success."
     else
       render :new
     end

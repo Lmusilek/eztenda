@@ -1,2 +1,13 @@
-<h1>Bids#new</h1>
-<p>Find me in app/views/bids/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4">
+      <%= simple_form_for [@venue, @bid] do |f| %>
+        <%= f.input :notes, placeholder: 'Insert the description of your offer here', label:false %>
+        <%= f.input :price, placeholder: 'Insert your price in £', label:false %>
+        <%= f.submit "Send your Bid" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
