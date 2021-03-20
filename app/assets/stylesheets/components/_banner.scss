@@ -33,3 +33,11 @@
 .jumbotron .container p{
   color:white
 }
+
+.banner-img{
+  height: 330px;
+}
+
+@media screen and (max-width: 922px) {
+  #banner-img { display: none; }  /* show it on small screens */
+}
