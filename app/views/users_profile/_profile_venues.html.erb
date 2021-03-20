@@ -1,31 +1,32 @@
-<h1>My venues</h1>
+<div class="row p-5">
+  <div class="table-responsive">
+    <table class="table">
 
-<div class="container mt-2">
-<h2>Venues</h2>
-  <div class="row d-flex">
+      <tbody>
+        <tr class="row-border">
+          <td class="label">Venue Name:</td>
+           <td class="label">Region:</td>
+           <td class="label">City:</td>
+           <td class="label">Postal code:</td>
+           <td class="label"> </td>
+           <td class="label"> </td>
+        </tr>
 
-    <% @venues.each do |venue| %>
-      <% if current_user.id === venue.user_id %>
-        <div class="col-12 col-md-6">
-          <div class="card-product">
+       <% @venues.each do |venue| %>
+         <% if current_user.id === venue.user_id %>
+            <tr class="row-border">
+              <td> <%= venue.venue_name %> </td>
+              <td> <%= venue.region %> </td>
+              <td> <%= venue.city%> </td>
+              <td> <%= link_to "" , edit_venue_path(venue), class:"fas fa-pencil-alt", style:"margin-right:10px;"%> </td>
+              <td> <%= link_to "" , venue_path(venue), class:"far fa-trash-alt", method: :delete %></td>
+            </tr>
+          <% end %>
+        <% end %>
 
-            <div>
+      </tbody>
 
-              <div class="profile-info">
-                 <h2> <%= link_to venue.venue_name , venue_path(venue), style:"margin-right:10px;"%></h2>
-              </div>
-              <div class="profile-actions">
-
-                <%= link_to "" , edit_venue_path(venue), class:"fas fa-pencil-alt", style:"margin-right:10px;"%>
-
-                <%= link_to "" , venue_path(venue), class:"far fa-trash-alt", method: :delete %>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
+    </table>
   </div>
 </div>
-
 

@@ -1,4 +1,31 @@
 .profile-grid{
   display: grid;
   grid-template-columns: 20% auto;
+  background: #D75746;
+  border-radius: 14px;
 }
+
+.profile-category{
+  border-bottom: 1px solid #D75746;
+  padding: 0px 0px 10px 20px;
+  margin-bottom: 10px;
+}
+
+.profile-content{
+  padding:10px;
+}
+
+.row-border {
+    border-bottom: solid 1px #67666e;
+}
+.lable {
+    color: #67666e;
+    min-width: 230px;
+}
+
+.profile-show{
+  height: 100%;
+  background-color: #db6f60;
+}
+
+

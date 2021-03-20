@@ -1,30 +1,35 @@
-<h1>My opportunitties</h1>
 
-<div class="container mt-2">
-<h2>Bids</h2>
-  <div class="row d-flex">
 
-    <% @drinksopportunities.each do |drinksopportunity| %>
-      <% if current_user.id === drinksopportunity.venue.user_id %>
-        <div class="col-12 col-md-6">
-          <div class="card-product">
+<div class="row p-5">
+  <div class="table-responsive">
+    <table class="table">
 
-            <div>
+      <tbody>
+        <tr class="row-border">
+          <td class="label">Venue:</td>
+           <td class="label">Start in:</td>
+           <td class="label">Ends in:</td>
+           <td class="label">Volume:</td>
+           <td class="label">Drink:</td>
+           <td class="label"> </td>
+           <td class="label"> </td>
+        </tr>
 
-              <div class="profile-info">
-                 <h2> <%= link_to drinksopportunity.start_time , drinks_opportunity_path(drinksopportunity), style:"margin-right:10px;"%></h2>
-              </div>
-              <div class="profile-actions">
+        <% @drinksopportunities.each do |drinksopportunity| %>
+          <% if current_user.id === drinksopportunity.venue.user_id %>
+            <tr class="row-border">
+              <td> <%= drinksopportunity.venue.venue_name %> </td>
+              <td> <%= drinksopportunity.start_time %> </td>
+              <td> <%= drinksopportunity.end_time %> </td>
+              <td> <%= drinksopportunity.quantity %> </td>
 
-                <%= link_to "" , edit_drinks_opportunity_path(drinksopportunity), class:"fas fa-pencil-alt", style:"margin-right:10px;"%>
+            </tr>
+          <% end %>
+        <% end %>
 
-                <%= link_to "" , drinks_opportunity_path(drinksopportunity), class:"far fa-trash-alt", method: :delete %>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
+      </tbody>
+
+    </table>
   </div>
 </div>
 

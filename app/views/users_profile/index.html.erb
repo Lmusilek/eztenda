@@ -1,13 +1,22 @@
 <div class="container mt-4">
+  <div class="profile-content">
   <div class="profile-grid">
      <div class="profile-menu">
-      <a class="dropdown-item" onclick="document.getElementById('profile-results').innerHTML=document.getElementById('profile_list_venues').innerHTML;">Venues</a>
-      <a class="dropdown-item" onclick="document.getElementById('profile-results').innerHTML=document.getElementById('profile_list_opportunities').innerHTML;">Opportunities</a>
-      <a class="dropdown-item" onclick="document.getElementById('profile-results').innerHTML=document.getElementById('profile_list_bids').innerHTML;">Bids</a>
+        <span><%= current_user.first_name %></span>
+        <br>
+        <span>Menu</span>
+        <a class="dropdown-item" onclick="document.getElementById('profile-results').innerHTML=document.getElementById('profile_account').innerHTML;">Account</a>
+        <a class="dropdown-item" onclick="document.getElementById('profile-results').innerHTML=document.getElementById('profile_list_venues').innerHTML;">Venues</a>
+        <a class="dropdown-item" onclick="document.getElementById('profile-results').innerHTML=document.getElementById('profile_list_opportunities').innerHTML;">Opportunities</a>
+        <a class="dropdown-item" onclick="document.getElementById('profile-results').innerHTML=document.getElementById('profile_list_bids').innerHTML;">Bids</a>
      </div>
 
+     <div class="profile-show">
      <div id="profile-results"></div>
-     <div id="profile_list_venues" style="visibility:hidden;" >
+        <div id="profile_account" style="visibility:hidden;" >
+          <%= render 'profile_account'%>
+        </div>
+        <div id="profile_list_venues" style="visibility:hidden;" >
           <%= render 'profile_venues'%>
         </div>
         <div id="profile_list_opportunities" style="visibility:hidden;" >
@@ -16,6 +25,8 @@
         <div id="profile_list_bids" style="visibility:hidden;" >
           <%= render 'profile_bids'%>
         </div>
+      </div>
+   </div>
    </div>
 </div>
 
