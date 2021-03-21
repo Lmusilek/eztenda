@@ -8,6 +8,7 @@ class VenuesController < ApplicationController
   end
 
   def show
+    @bid = Bid.new
     @venue = Venue.find(params[:id])
       @markers = [
         {
