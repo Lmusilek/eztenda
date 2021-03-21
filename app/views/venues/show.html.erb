@@ -7,11 +7,10 @@
       <div class="row d-flex">
         <div class="col-md-12">
         <% if @venue.photo.attached? %>
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @event.photo.key %>');">
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @venue.photo.key %>');">
             <h1><%= @venue.venue_name %></h1>
           </div>
         <% else %>
-
           <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://www.historic-uk.com/wp-content/uploads/2019/02/oldest-pub-in-england-2800x1440.jpg');">
             <h1><%= @venue.venue_name %></h1>
           </div>
@@ -28,31 +27,45 @@
           </div>
         </div>
 
+
         <div class="card p-3 mt-3">
           <p><%= @venue.description %></p>
         </div>
 
-
-
           <% @venue.drinks_opportunities.each do |opportunity|  %>
+          <% @opportunity = opportunity %>
           <div class="card mt-3 p-3">
             <h4 class="border-bottom"><strong>Listing Opportunity #:</strong> <%=opportunity.id %></h4>
             <p class="mt-3"><strong>Drink type:</strong> <%= Drink.find(opportunity.drink_id).name %></p>
-            <p><strong>Estimated qty:</strong> <%=opportunity.quantity %> </p>
+            <p><strong>Estimated qty:</strong> <%=opportunity.quantity %> <%=opportunity.bottle_type %></p>
             <p><strong>Listing dates:</strong> <%=opportunity.start_time.strftime('%e %B %Y') %> - <%=opportunity.end_time.strftime('%e %B %Y') %> </p>
-            <%= link_to "Place bid", new_drinks_opportunity_bid_path(opportunity), class: "btn-auction" %>
 
-            <% opportunity.bids.each do |bid| %>
-            <p><%= bid %></p>
-            <% end %>
+            <h4 class="mt-2"><strong>Current bids</strong></h4>
+            <% if opportunity.bids.any? %>
+
+            <table>
+                <tr class="row-border">
+                  <th class="lable-sm"> Name: </th>
+                  <th class="lable-sm">Price: </th>
+                  <th class="lable-sm">Date: </th>
+                </tr>
+              <% opportunity.bids.each do |bid| %>
+                <tr class="row-border">
+                  <td><%= bid.user.first_name%> <%=bid.user.last_name %></td>
+                  <td>£<%= bid.price %></td>
+                  <td><%= bid.created_at.strftime('%e %B %Y') %></td>
+                </tr>
+              <% end %>
+            </table>
+
+
+            <% else %>
+              <p>No open bids</p>
+            <%#= link_to "Place bid", new_drinks_opportunity_bid_path(opportunity), class: "btn-auction mt-3" %>
+             <% end %>
           </div>
+          <%= render "bids/partial/bid" %>
           <% end %>
-
-       <div class ="container mt-4">
-        <div>
-          <h2>Bidding History</h2>
-        </div>
-      </div>
     </div>
 
     <div class="col-md-4">
