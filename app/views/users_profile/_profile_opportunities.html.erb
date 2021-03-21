@@ -18,6 +18,8 @@
         <% @drinksopportunities.each do |drinksopportunity| %>
           <% if current_user.id === drinksopportunity.venue.user_id %>
             <tr class="row-border">
+              <% venue = drinksopportunity.venue %>
+              <td> <%= link_to drinksopportunity.venue.venue_name, venue_path(venue)%></td>
               <td> <%= drinksopportunity.venue.venue_name %> </td>
               <td> <%= drinksopportunity.start_time %> </td>
               <td> <%= drinksopportunity.end_time %> </td>

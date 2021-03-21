@@ -1,32 +1,59 @@
 <div class="container mt-4">
   <div class="profile-content">
-  <div class="profile-grid">
-     <div class="profile-menu">
-        <span><%= current_user.first_name %></span>
-        <br>
-        <span>Menu</span>
-        <a class="dropdown-item" onclick="document.getElementById('profile-results').innerHTML=document.getElementById('profile_account').innerHTML;">Account</a>
-        <a class="dropdown-item" onclick="document.getElementById('profile-results').innerHTML=document.getElementById('profile_list_venues').innerHTML;">Venues</a>
-        <a class="dropdown-item" onclick="document.getElementById('profile-results').innerHTML=document.getElementById('profile_list_opportunities').innerHTML;">Opportunities</a>
-        <a class="dropdown-item" onclick="document.getElementById('profile-results').innerHTML=document.getElementById('profile_list_bids').innerHTML;">Bids</a>
-     </div>
+    <div class="profile-grid">
+       <div id="profile-menu">
+          <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar-account", alt: "avatar-large"  %>
+          <% else %>
+            <%= image_tag "avatar.png", class: "avatar-account", alt: "avatar-large" %>
+          <% end %>
+          <span style="color:white"><%= current_user.first_name %></span>
+          <br>
+          <span class="menu-icon">Menu</span>
+          <button class="tablinks profile-btn btn-block" onclick="openResult(event, 'Account Overview')" id="defaultOpen">Account</button>
+          <button class="tablinks profile-btn btn-block" onclick="openResult(event, 'Venues')" id="defaultOpen">Venues</button>
+          <button class="tablinks profile-btn btn-block" onclick="openResult(event, 'Opportunities')" id="defaultOpen">Opportunities</button>
+          <button class="tablinks profile-btn btn-block" onclick="openResult(event, 'Bids')" id="defaultOpen">Bids</button>
+       </div>
 
-     <div class="profile-show">
-     <div id="profile-results"></div>
-        <div id="profile_account" style="visibility:hidden;" >
+        <div id="Account Overview" class="tabcontent">
           <%= render 'profile_account'%>
         </div>
-        <div id="profile_list_venues" style="visibility:hidden;" >
+
+        <div id="Venues" class="tabcontent">
           <%= render 'profile_venues'%>
         </div>
-        <div id="profile_list_opportunities" style="visibility:hidden;" >
+
+        <div id="Opportunities" class="tabcontent">
           <%= render 'profile_opportunities'%>
         </div>
-        <div id="profile_list_bids" style="visibility:hidden;" >
+
+        <div id="Bids" class="tabcontent">
           <%= render 'profile_bids'%>
         </div>
-      </div>
-   </div>
-   </div>
+
+    </div>
+  </div>
 </div>
+
+<script>
+  function openResult(evt, resultName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(resultName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+
+  // Get the element with id="defaultOpen" and click on it
+  document.getElementById("defaultOpen").click();
+</script>
+
+
 

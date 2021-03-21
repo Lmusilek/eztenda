@@ -15,15 +15,12 @@
        <% @venues.each do |venue| %>
          <% if current_user.id === venue.user_id %>
             <tr class="row-border">
-              <td> <%= venue.venue_name %> </td>
+              <td><%= link_to venue.venue_name, venue_path(venue)%> </td>
               <td> <%= venue.region %> </td>
               <td> <%= venue.city%> </td>
-              <td> <%= link_to "" , edit_venue_path(venue), class:"fas fa-pencil-alt", style:"margin-right:10px;"%> </td>
-              <td> <%= link_to "" , venue_path(venue), class:"far fa-trash-alt", method: :delete %></td>
             </tr>
-          <% end %>
-        <% end %>
-
+         <% end %>
+       <% end %>
       </tbody>
 
     </table>
