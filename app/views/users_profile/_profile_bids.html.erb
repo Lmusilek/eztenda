@@ -14,7 +14,7 @@
         </tr>
 
         <% @bids.each do |bid| %>
-
+        <% raise %>
          <% if current_user.id === bid.user_id %>
             <tr class="row-border">
               <% venue = DrinksOpportunity.find(bid.drinks_opportunity_id).venue %>
@@ -33,7 +33,6 @@
          <% end %>
 
       </tbody>
-
     </table>
   </div>
 </div>
