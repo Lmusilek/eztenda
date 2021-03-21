@@ -2,23 +2,20 @@ class VenuesController < ApplicationController
   def index
     @query = params[:query]
     @venues = Venue.search(params[:query])
-
-    if @venues.length == 0
-      @venues = Venue.all
-    end
+      if @venues.length == 0
+        @venues = Venue.all
+      end
   end
 
   def show
     @venue = Venue.find(params[:id])
-
-       @markers = [
-      {
-        lat: @venue.latitude,
-        lng: @venue.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { venue: @venue })
-
-      }
-    ]
+      @markers = [
+        {
+          lat: @venue.latitude,
+          lng: @venue.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { venue: @venue })
+        }
+      ]
   end
 
   def new

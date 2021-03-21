@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row new-from-create justify-content-center">
+    <div class="col-12 col-sm-12 form-login">
+      <%= simple_form_for (@drink_opportunity) do |f| %>
+        <%= f.input :start_time %>
+        <%= f.input :end_time  %>
+        <%= f.input :quantity, label: false, placeholder: "Quantity" %>
+        <%= f.input :bottle_type, label: false, placeholder: "Specify the type of container" %>
+        <%= f.button :submit, class: 'btn btn-primary'  %>
+    <% end %>
+    </div>
+  </div>
+</div>
