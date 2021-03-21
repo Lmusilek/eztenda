@@ -6,4 +6,5 @@ class DrinksOpportunity < ApplicationRecord
   validates :start_time, presence: true
   validates :end_time, presence: true
   validates :quantity, presence: true
+  validates :bottle_type, presence: true
 end
