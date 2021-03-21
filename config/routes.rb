@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :venues do
     resources :drinks_opportunities
   end
-  resources :drinks_opportunities do
+  resources :drinks_opportunities, only: :show  do
     resources :bids
   end
 

@@ -1,11 +1,30 @@
 class VenuesController < ApplicationController
   def index
     @query = params[:query]
-    @venues = Venue.search(params[:query])
-      if @venues.length == 0
-        @venues = Venue.all
+    if not @query or @query.empty?
+      @venues = Venue.all
+      return
+    end
+    #@venues = Venue.search(params[:query])
+    # @venues = Venue.select { |venue| venue.drinks_opportunities.drink_id.include?(Drink.find_by(name: params[:query])) }
+    @drinks = Drink.where("name ILIKE ?", "%#{params[:query]}%")
+
+    @venues = []
+
+    Venue.all.each do |venue|
+      venue.drinks_opportunities.each do |opportunity|
+           @drinks.each do |drink|
+            if opportunity.drink_id == drink.id
+                @venues << venue
+            end
+          end
       end
-  end
+    end
+
+    if @venues.empty?
+      @venues = Venue.all
+    end
+end
 
   def show
     @venue = Venue.find(params[:id])
