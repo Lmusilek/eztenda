@@ -6,18 +6,34 @@
             <%= image_tag "logo.png" %>
             <% end %>
 
+
+  <div class="row">
+    <div class="col-12">
+      <%= form_tag venues_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "🔍 Search for tenders"
+      %>
+    </div>
+  <% end %>
+  </div>
+
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav">
               <% if user_signed_in? %>
-                <li class="nav-item active">
-                  <%= link_to "Home", "#", class: "nav-link" %>
+                <li class="nav-item active mr-4">
+                  <%= link_to "HOW IT WORKS", "#", class: "nav-link", id: "nav-tab" %>
                 </li>
-                <li class="nav-item">
-                  <%= link_to "Messages", "#", class: "nav-link" %>
+                <li class="nav-item active mr-4">
+                  <%= link_to "USE CASES", "#", class: "nav-link", id: "nav-tab" %>
+                </li>
+                <li class="nav-item active mr-4">
+                  <%= link_to "ABOUT US", "#", class: "nav-link", id: "nav-tab" %>
                 </li>
                 <li class="nav-item dropdown">
                   <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -29,7 +45,10 @@
                 </li>
               <% else %>
                 <li class="nav-item">
-                  <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+                  <%= link_to "LOG IN", new_user_session_path, class: "nav-link mr-3" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "Sign up", new_user_registration_path, class: "nav-link sign-up-button btn btn-gray btn-sm p-2 border-gray" %>
                 </li>
               <% end %>
             </ul>
@@ -37,3 +56,44 @@
     </div>
   </div>
 </div>
+
+ <div class="flex-row filter-tabs-row">
+      <ul class="navbar-nav flex-row", id="filter-tabs">
+        <li class="nav-item active mr-2">
+          <%= link_to "Lager", "#", class: "nav-link", id: "nav-tab" %>
+        </li>
+        <li class="nav-item active mr-4">
+          <%= link_to "Cider", "#", class: "nav-link", id: "nav-tab" %>
+        </li>
+        <li class="nav-item active mr-4">
+          <%= link_to "Craft beer", "#", class: "nav-link", id: "nav-tab" %>
+        </li>
+        <li class="nav-item active mr-4">
+          <%= link_to "Bitter", "#", class: "nav-link", id: "nav-tab" %>
+        </li>
+        <li class="nav-item active mr-4">
+          <%= link_to "Stout", "#", class: "nav-link", id: "nav-tab" %>
+        </li>
+        <li class="nav-item active mr-4">
+          <%= link_to "Red wine", "#", class: "nav-link", id: "nav-tab" %>
+        </li>
+        <li class="nav-item active mr-4">
+          <%= link_to "White wine", "#", class: "nav-link", id: "nav-tab" %>
+        </li>
+        <li class="nav-item active mr-4">
+          <%= link_to "Sparkling wine", "#", class: "nav-link", id: "nav-tab" %>
+        </li>
+        <li class="nav-item active mr-4">
+          <%= link_to "Fortified wine", "#", class: "nav-link", id: "nav-tab" %>
+        </li>
+        <li class="nav-item active mr-4">
+          <%= link_to "Champagne", "#", class: "nav-link", id: "nav-tab" %>
+        </li>
+        <li class="nav-item active mr-4">
+          <%= link_to "Carbonated soft drinks", "#", class: "nav-link", id: "nav-tab" %>
+        </li>
+        <li class="nav-item active mr-4">
+          <%= link_to "See all categories", "#", class: "nav-link", id: "nav-tab" %>
+        </li>
+      </ul>
+    </div>
