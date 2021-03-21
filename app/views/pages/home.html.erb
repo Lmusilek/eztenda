@@ -3,46 +3,28 @@
 <div class="container">
    <i><h1 class="text-center mt-3">Featured Pubs</h1></i>
 
-    <div class="row mb-3">
-      <div class="col-12 col-md-4 mt-3">
-          <div class="card-trip">
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+<div class="row mb-3">
+  <div class="col-12 col-md-4 mt-3">
+    <% @venues.each do |venue| %>
+      <%= link_to venue do %>
+        <div class="card-trip">
+          <% if venue.photo.attached? %>
+            <%= cl_image_tag venue.photo.key%>
+          <% else %>
+            <%= image_tag "logo.png" %>
+          <% end %>
             <div class="card-trip-infos">
-              <div>
-                <h2>Title here</h2>
-                <p>Short description here!</p>
-              </div>
+              <h2>venue.venue_name</h2>
+              <p>Short description here!</p>
+            </div>
+            <div>
               <h2 class="card-trip-pricing">£99.99</h2>
             </div>
-          </div>
         </div>
-
-        <div class="col-12 col-md-4 mt-3">
-          <div class="card-trip">
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-            <div class="card-trip-infos">
-              <div>
-                <h2>Title here</h2>
-                <p>Short description here!</p>
-              </div>
-              <h2 class="card-trip-pricing">£99.99</h2>
-          </div>
-        </div>
-      </div>
-        
-        <div class="col-12 col-md-4 mt-3">
-          <div class="card-trip">
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-            <div class="card-trip-infos">
-              <div>
-                <h2>Title here</h2>
-                <p>Short description here!</p>
-              </div>
-              <h2 class="card-trip-pricing">£99.99</h2>
-            </div>
-          </div>
-        </div>
+      <% end %>
+    <% end %>
   </div>
+</div>
 
     <div class="container">
       <div class="row">
