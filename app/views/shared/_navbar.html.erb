@@ -6,21 +6,37 @@
             <%= image_tag "logo.png" %>
             <% end %>
 
+
+  <div class="row">
+    <div class="col-10">
+      <%= form_tag venues_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Search for tenders"
+      %>
+    </div>
+    <div class="col-2">
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+  </div>
+
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav">
               <% if user_signed_in? %>
                 <li class="nav-item active mr-4">
-                  <%= link_to "HOW IT WORKS", "#", class: "nav-link" %>
+                  <%= link_to "HOW IT WORKS", "#", class: "nav-link", id: "nav-tab" %>
                 </li>
                 <li class="nav-item active mr-4">
-                  <%= link_to "USE CASES", "#", class: "nav-link" %>
+                  <%= link_to "USE CASES", "#", class: "nav-link", id: "nav-tab" %>
                 </li>
                 <li class="nav-item active mr-4">
-                  <%= link_to "ABOUT US", "#", class: "nav-link" %>
+                  <%= link_to "ABOUT US", "#", class: "nav-link", id: "nav-tab" %>
                 </li>
                 <li class="nav-item dropdown">
                   <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -43,3 +59,44 @@
     </div>
   </div>
 </div>
+
+ <div class="flex-row filter-tabs-row">
+      <ul class="navbar-nav flex-row", id="filter-tabs">
+        <li class="nav-item active mr-2">
+          <%= link_to "Lager", "#", class: "nav-link", id: "nav-tab" %>
+        </li>
+        <li class="nav-item active mr-4">
+          <%= link_to "Cider", "#", class: "nav-link", id: "nav-tab" %>
+        </li>
+        <li class="nav-item active mr-4">
+          <%= link_to "Craft beer", "#", class: "nav-link", id: "nav-tab" %>
+        </li>
+        <li class="nav-item active mr-4">
+          <%= link_to "Bitter", "#", class: "nav-link", id: "nav-tab" %>
+        </li>
+        <li class="nav-item active mr-4">
+          <%= link_to "Stout", "#", class: "nav-link", id: "nav-tab" %>
+        </li>
+        <li class="nav-item active mr-4">
+          <%= link_to "Red wine", "#", class: "nav-link", id: "nav-tab" %>
+        </li>
+        <li class="nav-item active mr-4">
+          <%= link_to "White wine", "#", class: "nav-link", id: "nav-tab" %>
+        </li>
+        <li class="nav-item active mr-4">
+          <%= link_to "Sparkling wine", "#", class: "nav-link", id: "nav-tab" %>
+        </li>
+        <li class="nav-item active mr-4">
+          <%= link_to "Fortified wine", "#", class: "nav-link", id: "nav-tab" %>
+        </li>
+        <li class="nav-item active mr-4">
+          <%= link_to "Champagne", "#", class: "nav-link", id: "nav-tab" %>
+        </li>
+        <li class="nav-item active mr-4">
+          <%= link_to "Carbonated soft drinks", "#", class: "nav-link", id: "nav-tab" %>
+        </li>
+        <li class="nav-item active mr-4">
+          <%= link_to "See all categories", "#", class: "nav-link", id: "nav-tab" %>
+        </li>
+      </ul>
+    </div>

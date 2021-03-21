@@ -1,22 +1,5 @@
 <%= render 'shared/banner' %>
 
-<div class="container">
-  <div class="row">
-    <div class="col-4">
-      <%= form_tag venues_path, method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Find a Venue"
-      %>
-    </div>
-    <div class="col-2">
-      <%= submit_tag "Search", class: "btn btn-primary" %>
-    </div>
-  <% end %>
-  </div>
-</div>
-
 <div class="container mt-4">
   <div class="row">
     <div class="col-12">

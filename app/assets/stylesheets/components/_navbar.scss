@@ -12,9 +12,33 @@
 
 .nav-wrapper{
   background: #ffffff;
-  border-bottom: solid 0.4px rgba(63, 63, 63, 0.315);
 }
 
 .sign-up-button {
   color: white !important;
 }
+
+#nav-tab:hover {
+  color: grey;
+}
+
+.filter-bar {
+  background-color: rgb(235, 232, 232);
+  max-height: 30px;
+}
+
+#filter-tabs {
+  
+  justify-content:space-between;
+  color: black!important;
+  align-items: center;
+  font-size: 12px;
+}
+
+.filter-tabs-row {
+ margin: 0% 175px;
+}
+
+.filter-tabs-row a{
+  color: black;
+ }
