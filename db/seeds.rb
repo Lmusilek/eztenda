@@ -40,11 +40,31 @@ venue_img_arr = [img1, img2, img3, img4, img5, img6, img7, img8, img9]
 
 puts "Creating venues..."
 
-fox = User.create!(first_name: "Ronaldo", last_name: "Goncalves", email: "ronaldo@example.com", password: "123456", is_venue: true )
-hound = User.create!(first_name: "Jeremaia", last_name: "Harrison", email: "jeremaia@example.com", password: "123456", is_venue: true )
-duck = User.create!(first_name: "Roberto", last_name: "Piancatelli", email: "roberto@example.com", password: "123456", is_venue: true )
-crown = User.create!(first_name: "Lukas", last_name: "Musilek", email: "lukas@example.com", password: "123456", is_venue: true )
-ship = User.create!(first_name: "Juliana", last_name: "Mokwa", email: "juliana@example.com", password: "123456", is_venue: true )
+ronaldo = User.create!(first_name: "Ronaldo", last_name: "Goncalves", email: "ronaldo@example.com", password: "123456", is_venue: true )
+    file = URI.open('https://images.unsplash.com/photo-1577041677443-8bbdfd8cce62?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80')
+    ronaldo.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+    ronaldo.save!
+
+jeremaia = User.create!(first_name: "Jeremaia", last_name: "Harrison", email: "jeremaia@example.com", password: "123456", is_venue: true )
+    file = URI.open('https://images.unsplash.com/photo-1545418792-3460581d30d4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80')
+    jeremaia.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+    jeremaia.save!
+
+roberto = User.create!(first_name: "Roberto", last_name: "Piancatelli", email: "roberto@example.com", password: "123456", is_venue: true )
+    file = URI.open('https://texxandthecity.com/wp-content/uploads/2020/11/Painted-Flowers-1.png')
+    roberto.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+    roberto.save!
+
+lukas = User.create!(first_name: "Lukas", last_name: "Musilek", email: "lukas@example.com", password: "123456", is_venue: true )
+    file = URI.open('https://images.unsplash.com/photo-1598125009836-dac252cf06aa?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1655&q=80')
+    lukas.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+    lukas.save!
+
+juliana = User.create!(first_name: "Juliana", last_name: "Mokwa", email: "juliana@example.com", password: "123456", is_venue: true )
+    file = URI.open('https://images.unsplash.com/photo-1521417531039-75e91486cc40?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1615&q=80')
+    juliana.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+    juliana.save!
+
 
 # owners = [fox, hound, duck, crown, ship]
 puts "Saving venues into an array..."
