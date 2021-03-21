@@ -7,12 +7,30 @@
       <tbody>
         <tr class="row-border">
           <td class="label">Venue name</td>
+          <td class="label">Situation</td>
            <td class="label">Price:</td>
            <td class="label">Drink:</td>
            <td class="label">Contract:</td>
-           <td class="label"> </td>
         </tr>
 
+        <% @bids.each do |bid| %>
+
+         <% if current_user.id === bid.user_id %>
+            <tr class="row-border">
+              <% venue = DrinksOpportunity.find(bid.drinks_opportunity_id).venue %>
+              <td> <%= link_to venue.venue_name, venue_path(venue)%></td>
+              <% if bid.is_accepted %>
+                <td> Accepted </td>
+              <% else %>
+                <td> Not accepeted </td>
+              <% end %>
+              <td> <%= bid.price %> </td>
+              <% drink = DrinksOpportunity.find(bid.drinks_opportunity_id).drink_id%>
+              <td> <%= Drink.find(drink).name%> </td>
+              <td> <%= bid.notes%> </td>
+            </tr>
+           <% end %>
+         <% end %>
 
       </tbody>
 
