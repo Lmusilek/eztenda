@@ -67,10 +67,13 @@ seller_arr = []
   seller_arr.push(user)
 end
 
+puts "Creating array of drink types"
+drink_arr = %w(Larger Ale Stout Guinness Wine Champagne Vodka Gin Whisky Rum)
+
 puts "Creating Drinks table..."
-100.times do
+drink_arr.each do |drink|
   drinks = Drink.new(
-    name: Faker::Beer.brand
+    name: drink
     )
     drinks.save!
   end
@@ -98,13 +101,14 @@ puts "Createing bids"
 
 DrinksOpportunity.all.each do |opportunity|
   rand(1..2).times do
-    Bid.new(
+    bid = Bid.new(
       contract: "This is a contract!",
       price: rand(200..5000),
       notes: "These are some notes for the bids!",
       user_id: seller_arr.sample.id,
       drinks_opportunity: opportunity
     )
+    bid.save!
   end
 end
 
