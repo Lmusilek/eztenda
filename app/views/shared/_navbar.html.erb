@@ -8,16 +8,13 @@
 
 
   <div class="row">
-    <div class="col-10">
+    <div class="col-12">
       <%= form_tag venues_path, method: :get do %>
       <%= text_field_tag :query,
         params[:query],
         class: "form-control",
-        placeholder: "Search for tenders"
+        placeholder: "🔍 Search for tenders"
       %>
-    </div>
-    <div class="col-2">
-      <%= submit_tag "Search", class: "btn btn-primary" %>
     </div>
   <% end %>
   </div>
