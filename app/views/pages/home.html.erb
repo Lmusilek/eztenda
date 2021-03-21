@@ -9,7 +9,16 @@
   <div class="row">
     <% @venues.each do |venue| %>
       <div class="col-12 col-sm-6 col-md-4">
-        <img class="card-product-img" src="https://www.historic-uk.com/wp-content/uploads/2019/02/oldest-pub-in-england-2800x1440.jpg" />
+        <% if venue.photo.attached? %>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path venue.photo.key %>');">
+            <h1><%= venue.venue_name %></h1>
+          </div>
+        <% else %>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://www.historic-uk.com/wp-content/uploads/2019/02/oldest-pub-in-england-2800x1440.jpg');">
+            <h1><%= venue.venue_name %></h1>
+          </div>
+        <% end %>
+
           <div class="card-product box-shadow mb-4">
             <h2><%= venue.venue_name %></h2>
             <p><i class="fas fa-map-marker-alt"></i> <%= venue.city %>, <%= venue.post_code %></p>

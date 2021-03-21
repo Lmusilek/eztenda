@@ -6,24 +6,26 @@
 
       <tbody>
         <tr class="row-border">
-          <td class="label">Venue:</td>
-           <td class="label">Start in:</td>
-           <td class="label">Ends in:</td>
-           <td class="label">Volume:</td>
-           <td class="label">Drink:</td>
-           <td class="label"> </td>
-           <td class="label"> </td>
+          <td class="label"><strong>Venue:</strong></td>
+           <td class="label"><strong>Start date:</strong></td>
+           <td class="label"><strong>End date:</strong></td>
+           <td class="label"><strong>Qty:</strong></td>
+           <td class="label"><strong>Type:</strong></td>
+           <td class="label"><strong>Link</strong></td>
+           <!-- <td class="label"><strong>Approve bid</strong></td> -->
         </tr>
 
         <% @drinksopportunities.each do |drinksopportunity| %>
           <% if current_user.id === drinksopportunity.venue.user_id %>
             <tr class="row-border">
               <% venue = drinksopportunity.venue %>
-              <td> <%= link_to drinksopportunity.venue.venue_name, venue_path(venue)%></td>
               <td> <%= drinksopportunity.venue.venue_name %> </td>
-              <td> <%= drinksopportunity.start_time %> </td>
-              <td> <%= drinksopportunity.end_time %> </td>
+              <td> <%= drinksopportunity.start_time.strftime('%e %B %Y') %> </td>
+              <td> <%= drinksopportunity.end_time.strftime('%e %B %Y') %> </td>
               <td> <%= drinksopportunity.quantity %> </td>
+              <td> <%= drinksopportunity.bottle_type %> </td>
+              <td> <%= link_to "view", venue_path(venue)%></td>
+              <<!-- td> <input type="checkbox"></td> -->
 
             </tr>
           <% end %>

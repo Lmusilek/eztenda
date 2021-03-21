@@ -66,7 +66,7 @@ juliana = User.create!(first_name: "Juliana", last_name: "Mokwa", email: "julian
     juliana.save!
 
 
-# owners = [fox, hound, duck, crown, ship]
+pub_names_arr = ["The fox", "The Hound", "The duck", "The crown", "The Ship", "The Dog", "The Chicken", "The Cow", "The Chicken" ]
 puts "Saving venues into an array..."
 
 owners = User.all
@@ -74,8 +74,8 @@ owners = User.all
 puts "Creating venues"
 owners.each do |owner|
   venue = Venue.new(
-  venue_name: owner.last_name,
-  description: "Nice pub",
+  venue_name: pub_names_arr.sample,
+  description: "Coronavirus update: For the latest information on coronavirus and how it might impact your travel in and around Nottingham and Nottinghamshire, including information on which venues and attractions are closed, please visit our Know Before You Go page. We recommend that you check the website and social media of individual venues and attractions when planning a visit. The Malt Cross is a Grade II listed Victorian Music Hall set at the heart of Nottingham city centre, just off Old Market Square. It is the only Victorian Music Hall in the country that operates as it's original design intended, providing food, drink and live music. Originally built in 1877, the Malt Cross was carefully restored in 1997 to be closer to its former glory. In 2014, the Malt Cross received significant Heritage Lottery Funding and has been restored again but also expanded to make full use of the 6 levels within the site. The caves beneath have been opened up for tours, as well as a brand new art gallery and sound recording room. There's also a brand new craft workshop for schools to come along and get creative.",
   region: "England",
   city: "London",
   post_code: "E1 0PQ",

@@ -4,20 +4,21 @@
 
       <tbody>
         <tr class="row-border">
-          <td class="label">Venue Name:</td>
-           <td class="label">Region:</td>
-           <td class="label">City:</td>
-           <td class="label">Postal code:</td>
-           <td class="label"> </td>
-           <td class="label"> </td>
+          <td class="label"><strong>Venue Name:</strong></td>
+           <td class="label"><strong>Region:</strong></td>
+           <td class="label"><strong>City:</strong></td>
+           <td class="label"><strong>Post Code:</strong></td>
+          <td class="label"><strong>Link:</strong></td>
         </tr>
 
        <% @venues.each do |venue| %>
          <% if current_user.id === venue.user_id %>
             <tr class="row-border">
-              <td><%= link_to venue.venue_name, venue_path(venue)%> </td>
+              <td><%= venue.venue_name%> </td>
               <td> <%= venue.region %> </td>
               <td> <%= venue.city%> </td>
+              <td> <%= venue.post_code%> </td>
+              <td><%= link_to 'Link', venue_path(venue), class: "link-blue" %></td>
             </tr>
          <% end %>
        <% end %>
